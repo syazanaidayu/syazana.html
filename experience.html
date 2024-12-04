@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Styles for the photo slider */
+        .slider {
+            position: relative;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slides img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 10px;
+        }
+
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+<marquee>Welcome to My Personal Website!</marquee>
+<embed src="audio/canon rock.mp3" hidden="true"></embed>   
+    <header>
+        <div class="logo">
+            <h1>Welcome to My Personal Website</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="biodata.html">Biodata</a></li>
+                <li><a href="family.html">My Family</a></li>
+                <li><a href="friends.html">My Friends</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <main>
+       
+        
+        <section id="experience">
+            <center><h2>MY EXPERIENCE</h2></center>
+            <hr>
+            <h2> Melaka, Perlis & Penang </h2>
+            <div class="slider">
+                <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+                <div class="slides">
+                    <img src="image/experience1.jpg" alt="Experience 1">
+                    <img src="image/experience2.jpg" alt="Experience 2">
+                    <img src="image/experience3.jpg" alt="Experience 3">
+                    <img src="image/experience4.jpg" alt="Experience 4">
+                    <img src="image/experience5.jpg" alt="Experience 5">
+                    <img src="image/experience6.jpg" alt="Experience 6">
+                    <img src="image/experience7.jpg" alt="Experience 7">
+                    <img src="image/experience8.jpg" alt="Experience 8">
+
+                </div>
+                <button class="next" onclick="changeSlide(1)">&#10095;</button>
+            </div>
+        </section>
+    </main>            
+    <script>
+        let currentSlide = 0;
+
+        function changeSlide(direction) {
+            const slides = document.querySelector('.slides');
+            const totalSlides = slides.children.length;
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            const slideWidth = slides.children[0].offsetWidth;
+            slides.style.transform = `translateX(${-currentSlide * slideWidth}px)`;
+        }
+    </script>
+</body>
+</html>
